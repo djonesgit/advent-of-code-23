@@ -1,12 +1,11 @@
 # Import libraries
-import pandas as pd
 import utilities as ut
 
 # Get input file
 input = ut.get_line_strings("inputs/day02.txt")
 
 
-# Return all digits in a string as a 'splatted' number
+# Return all digits in a string conctenated into a single number
 def find_number(string):
     number = [x for x in string if x.isdigit()]
     output = ""
@@ -53,6 +52,12 @@ def check_max_numbers(game):
     return rmax, gmax, bmax
 
 
+# Function to get the power of each game
+def get_power(game):
+    red, green, blue = check_max_numbers(game)
+    return red * green * blue
+
+
 # Define limits
 limits = {
     "red": 12,
@@ -71,9 +76,12 @@ def check_game_valid(game, limits=limits):
 
 # Loop through games to see which games are possible
 valid_games = []
+game_powers = []
 for game in input:
+    game_powers += [get_power(game)]
     if check_game_valid(game):
         valid_games += [find_game_number(game)]
 
 # Add together game numbers
 print("Solution to part one:", sum(valid_games))
+print("Solution to part two:", sum(game_powers))
