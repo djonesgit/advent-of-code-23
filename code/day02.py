@@ -1,3 +1,9 @@
+# Import time
+import time
+
+# Initialise timer
+tic = time.perf_counter()
+
 # Import libraries
 import utilities as ut
 
@@ -85,3 +91,7 @@ for game in input:
 # Add together game numbers
 print("Solution to part one:", sum(valid_games))
 print("Solution to part two:", sum(game_powers))
+
+# Finalise timer
+toc = time.perf_counter()
+print(f"Script took {toc - tic:0.2f} seconds to run.")

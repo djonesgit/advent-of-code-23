@@ -1,3 +1,9 @@
+# Import time
+import time
+
+# Initialise timer
+tic = time.perf_counter()
+
 # Import libraries
 import utilities as ut
 
@@ -48,3 +54,7 @@ solution_two = return_summed_output(input_modified)
 # Print solutions
 print("Solution to part one:", solution_one)
 print("Solution to part two:", solution_two)
+
+# Finalise timer
+toc = time.perf_counter()
+print(f"Script took {toc - tic:0.2f} seconds to run.")
