@@ -5,6 +5,7 @@ import time
 tic = time.perf_counter()
 
 # Import libraries
+import numpy as np
 import utilities as ut
 
 # Get input file
@@ -47,9 +48,22 @@ for matches_instance in matches:
     else:
         scores += [2 ** (matches_instance - 1)]
 
+# Now figure out how many of each card we should have
+cards_with_multiplicity = card_numbers.copy()
+for i in range(len(card_numbers)):
+    card_number = card_numbers[i]
+    matches_instance = matches[i]
+    if matches_instance != 0:
+        multiplier = len([x for x in cards_with_multiplicity if x == card_number])
+        cards_to_add = []
+        for j in range(1, matches_instance + 1):
+            cards_to_add += [card_number + j]
+        cards_with_multiplicity += list(np.repeat(cards_to_add, multiplier))
+
+
 # Print solutions
 print("Solution to part one:", sum(scores))
-print("Solution to part two:")
+print("Solution to part two:", len(cards_with_multiplicity))
 
 # Finalise timer
 toc = time.perf_counter()
