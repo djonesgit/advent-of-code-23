@@ -1,17 +1,17 @@
 # Import time
-import pandas as pd
 import time
 
 # Initialise timer
 tic = time.perf_counter()
 
 # Import libraries
+import pandas as pd
 import utilities as ut
 
 # Get input file
 input = ut.get_line_strings("inputs/day07.txt")
 
-# Get list of hands and bids doubles
+# Get lists of hands and bids
 hands = []
 bids = []
 for line in input:
